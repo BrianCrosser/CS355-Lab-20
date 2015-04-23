@@ -1,0 +1,26 @@
+<% include header %>
+
+    <div>
+    <% if(rs.length > 0) { %>
+        <table border="1">
+            <tr><th>Title</th><th>Rating</th></tr>
+            <% for (var i=0; rs.length > i; i++) { %>
+                <tr>
+                 <td><a href="/movie1/?movie1id=<%= rs[i].MovieID %>"> <%= rs[i].Title %></a></td>
+                 <td><a href="/movie1/?movie1id=<%= rs[i].MovieID %>"> <%= rs[i].AvgRating %></a></td>
+                 <td><a href="/movie1/edit?movie1id=<%= rs[i].MovieID %>"> <%= "Edit" %></a></td>
+                 <td><a href="/movie1/delete?movie1id=<%= rs[i].MovieID %>"> <%= "Delete" %></a></td>
+
+                </tr>
+            <% } %>
+        </table>
+    <% } else { %>
+         No movies are entered into the Movie1 database table.
+    <% } %>
+    </div>
+
+    <div style="margin-top:10px;">
+        <a href="/movie1/create">Create New Movie</a>
+    </div>
+
+<% include footer %>
