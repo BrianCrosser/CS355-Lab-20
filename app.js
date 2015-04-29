@@ -26,7 +26,7 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 
 // example of a global variable that can be passed to a template
-app.set('subtitle', 'Lab 18');
+app.set('subtitle', 'Lab 20');
 
 //configure routes
 app.use('/', routes);

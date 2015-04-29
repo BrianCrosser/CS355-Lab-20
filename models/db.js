@@ -49,6 +49,23 @@ exports.GetByIDMovie = function(movie1id, callback) {
     );
 }
 
+exports.GetMovieInfo = function(movie1id, callback) {
+    console.log(movie1id);
+    var query = 'CALL MovieInfo(' + movie1id + ')';
+    console.log(query);
+    connection.query(query,
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return;
+            }
+            callback(false, result);
+        }
+    );
+}
+
+
 exports.InsertMovie = function(movie1_info, callback) {
     console.log(movie1_info);
     var query = 'INSERT INTO Movie1 (Title) VALUES (\'' + movie1_info.Title + '\')';

@@ -19,7 +19,7 @@ router.get('/', function (req, res) {
         res.redirect('/movie1/all');
     }
     else {
-        db.GetByIDMovie(req.query.movie1id, function (err, result)
+        db.GetMovieInfo(req.query.movie1id, function (err, result)
         {
             if (err) throw err;
 
@@ -31,7 +31,7 @@ router.get('/', function (req, res) {
                     if (err) throw err;
 
                     // Send result to the template along with the original student id in case there were no results
-                    res.render('displayMovie1Info.ejs', {rs: result, movie1id: req.query.movie1id, rs1: result1, rs2: result2});
+                    res.render('displayMovie1Info.ejs', {rs: result[0], movie1id: req.query.movie1id, rs1: result1, rs2: result2});
                 });
 
             });
@@ -109,19 +109,6 @@ router.post('/edit', function (req, res) {
         }
     );
 });
-
-/*
-// Create Student Form
-router.get('/delete', function(req, res)
-{
-    db.GetByIDMovie(req.query.movie1id, function (err, result) {
-        if (err) throw err;
-
-        // Send result to the template along with the original student id in case there were no results
-        res.render('deleteMovie1Form.ejs', {action: '/movie1/delete', rs: result, movie1id: req.query.movie1id});
-    });
-});
-*/
 
 // Save Student information
 router.get('/delete', function (req, res) {
